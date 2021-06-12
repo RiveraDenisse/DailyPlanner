@@ -6,7 +6,7 @@ var saveBtn = document.querySelector(".saveBtn");
       document.getElementById('currentDay').innerHTML=presentTime;
 
     //verify with timer if timeslot if past/future/present task
-
+      //if timer is in the present then color g
     
       //save and retreive task information when savebtn/page refreshed 
         //when button is clicked then the text will be saved
@@ -17,9 +17,6 @@ var saveBtn = document.querySelector(".saveBtn");
         })
        
       
-        //retreive information when refresh button is pressed
-        //var retreiveList = localStorage.getItem("time");
-        //document.getElementById("todo").innerHTML = text;
-        
+        //retreive information when refresh button is pressed        
         var aValue = localStorage.getItem ('8AM')
         document.getElementById('todo').value =aValue;
