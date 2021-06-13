@@ -1,33 +1,33 @@
 var saveBtn = document.querySelector(".saveBtn");
-var hour = 8;
-var i =8;
+//var hour = 8;
+
     
-    //TODO: add timer to the application to id="currentday"
+    //add timer to the application to id="currentDay"
       var presentTime = moment().format('LLL');
       console.log(presentTime);
       document.getElementById('currentDay').innerHTML=presentTime;
       //variable holding presentHour which will be compared to timeslot hour
-      var presentHour = moment().format('HH:mm');
+      var presentHour = moment().format('HH');
       console.log(presentHour);
-      //convert hour (8,9,10) to HH:mm format
-      var hourFormat = "HH:mm";
-      var timeslot = moment(hour,hourFormat);
-      timeslot =timeslot.format('HH:mm');
-      console.log(timeslot);
-
+      
 
     //verify with timer if timeslot if past/future/present task
-    function timeComparison (){
-      //compare timeslot to presentTime if timeslot is less than present then .future
+    function timeComparison (hours){
+      //convert hour (8,9,10) to HH:mm format
+      var hourFormat = "HH";
+      var timeslot = moment(hours,hourFormat);
+      timeslot =timeslot.format('HH');
+      //compare timeslot to presentTime; if timeslot is greater than present then .future
       if (timeslot>presentHour){
-        $("textarea").addClass("future");
+        $(`#${hours}hrtextarea`).addClass("future");
       }
+      //if timeslot is less than presentTime ==> .past 
       else if (timeslot<presentHour){
-        $("textarea").addClass("past");
+        $(`#${hours}hrtextarea`).addClass("past");
       }
-      
-          //if formatted is greater than present then .past
-          //else .present
+      else{
+        $(`#${hours}hrtextarea`).addClass("present");
+      }    
     }
       //save and retreive task information when savebtn/page refreshed 
         //when button is clicked then the text will be saved
@@ -38,8 +38,13 @@ var i =8;
         })
        
       
-        //retreive information when refresh button is pressed        
-        var aValue = localStorage.getItem ('8AM')
-        document.getElementById('todo').value =aValue;
-
-        timeComparison ();
+        //retreive information when refresh button is pressed
+        for (var h=22;h<24; h++){        
+        var aValue = localStorage.getItem(h+'hr');
+        var element = document.getElementById(`${h}hrtextarea`);
+        console.log(`${h}hr`);
+        timeComparison (h);
+        element.value =aValue;
+        }
+window.location.reload(true);
+       
