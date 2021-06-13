@@ -2,11 +2,9 @@ var saveBtn = document.querySelector(".saveBtn");
     
     //add timer to the application to id="currentDay"
       var presentTime = moment().format('LLL');
-      console.log(presentTime);
       document.getElementById('currentDay').innerHTML=presentTime;
       //variable holding presentHour which will be compared to timeslot hour
       var presentHour = moment().format('HH');
-      console.log(presentHour);
       
 
     //verify with timer if timeslot if past/future/present task
@@ -40,7 +38,7 @@ var saveBtn = document.querySelector(".saveBtn");
         for (var h=8;h<18; h++){        
         var aValue = localStorage.getItem(h+'hr');
         var element = document.getElementById(`${h}hrtextarea`);
-        console.log(`${h}hr`);
+        //console.log(`${h}hr`);
         timeComparison (h);
         element.value =aValue;
         }
