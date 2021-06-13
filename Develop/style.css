@@ -4,7 +4,7 @@ body {
   line-height: 1;
 }
 
-/*this is for todo list*/
+
 textarea{
   background: transparent;
   border: none;
@@ -14,7 +14,7 @@ textarea{
   padding: 10px;
 }
 
-/*not used yet */
+
 .jumbotron {
   text-align: center;
   background-color: transparent;
