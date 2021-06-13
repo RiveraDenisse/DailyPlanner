@@ -1,6 +1,4 @@
 var saveBtn = document.querySelector(".saveBtn");
-//var hour = 8;
-
     
     //add timer to the application to id="currentDay"
       var presentTime = moment().format('LLL');
@@ -13,7 +11,7 @@ var saveBtn = document.querySelector(".saveBtn");
 
     //verify with timer if timeslot if past/future/present task
     function timeComparison (hours){
-      //convert hour (8,9,10) to HH:mm format
+      //convert hour (8,9,10) to HH format
       var hourFormat = "HH";
       var timeslot = moment(hours,hourFormat);
       timeslot =timeslot.format('HH');
@@ -39,12 +37,19 @@ var saveBtn = document.querySelector(".saveBtn");
        
       
         //retreive information when refresh button is pressed
-        for (var h=22;h<24; h++){        
+        for (var h=8;h<18; h++){        
         var aValue = localStorage.getItem(h+'hr');
         var element = document.getElementById(`${h}hrtextarea`);
         console.log(`${h}hr`);
         timeComparison (h);
         element.value =aValue;
         }
-window.location.reload(true);
+
+       //timer to refresh page
+       window.setInterval('refresh()',60000);
+       //this function will reload the page
+       function refresh(){
+         window.location.reload();
+       }
+        
        
